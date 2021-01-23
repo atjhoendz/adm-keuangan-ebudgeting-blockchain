@@ -77,25 +77,81 @@ export const itemsPemohon = [{
   "status-berkas":"ada"
 }]
 
-export const itemsAnggaran = [{
-  "nama-lembaga": "Sybilla",
-  "sisa-anggaran": "27711321.53"
+export const itemsEstimasi = [{
+  "tanggal-berangkat": "12/30/2020",
+  "nama-pemohon": "Alta",
+  "dari-lembaga": "Skiba",
+  "jenis-pmk": "Audrye",
+  "asal": "Nepal",
+  "tujuan": "Philippines",
+  "banyak": 43,
+  "biaya-satuan": 1,
+  "total": "74652401.79",
+  "status": "thasyts"
 }, {
-  "nama-lembaga": "Andonis",
-  "sisa-anggaran": "28607548.38"
+  "tanggal-berangkat": "12/22/2020",
+  "nama-pemohon": "Ines",
+  "dari-lembaga": "Realpoint",
+  "jenis-pmk": "Neile",
+  "asal": "Brazil",
+  "tujuan": "Uganda",
+  "banyak": 24,
+  "biaya-satuan": 17,
+  "total": "42717826.49",
+  "status": "ivbveno"
 }, {
-  "nama-lembaga": "Domenic",
-  "sisa-anggaran": "69509997.68"
+  "tanggal-berangkat": "02/25/2020",
+  "nama-pemohon": "Brien",
+  "dari-lembaga": "Skinix",
+  "jenis-pmk": "Lucie",
+  "asal": "Indonesia",
+  "tujuan": "China",
+  "banyak": 74,
+  "biaya-satuan": 66,
+  "total": "27809696.05",
+  "status": "tjqddwy"
 }, {
-  "nama-lembaga": "Chevy",
-  "sisa-anggaran": "98056200.89"
+  "tanggal-berangkat": "04/30/2020",
+  "nama-pemohon": "Mirilla",
+  "dari-lembaga": "Tagopia",
+  "jenis-pmk": "Cathlene",
+  "asal": "Malaysia",
+  "tujuan": "Argentina",
+  "banyak": 44,
+  "biaya-satuan": 76,
+  "total": "82097313.10",
+  "status": "fseocka"
 }, {
-  "nama-lembaga": "Cassandry",
-  "sisa-anggaran": "98027809.69"
+  "tanggal-berangkat": "02/14/2020",
+  "nama-pemohon": "Worthy",
+  "dari-lembaga": "Jatri",
+  "jenis-pmk": "Randy",
+  "asal": "Dominican Republic",
+  "tujuan": "China",
+  "banyak": 27,
+  "biaya-satuan": 88,
+  "total": "99650380.40",
+  "status": "yynywsg"
 }, {
-  "nama-lembaga": "Christi",
-  "sisa-anggaran": "78608410.24"
+  "tanggal-berangkat": "09/22/2020",
+  "nama-pemohon": "Eugenius",
+  "dari-lembaga": "Gabspot",
+  "jenis-pmk": "Florence",
+  "asal": "Ukraine",
+  "tujuan": "Russia",
+  "banyak": 73,
+  "biaya-satuan": 57,
+  "total": "67290016.73",
+  "status": "fghwipw"
 }, {
-  "nama-lembaga": "Augusta",
-  "sisa-anggaran": "97144351.43"
+  "tanggal-berangkat": "01/30/2020",
+  "nama-pemohon": "Liam",
+  "dari-lembaga": "Livetube",
+  "jenis-pmk": "Elfrieda",
+  "asal": "Sierra Leone",
+  "tujuan": "China",
+  "banyak": 96,
+  "biaya-satuan": 1,
+  "total": "75601881.56",
+  "status": "hepwscs"
 }]

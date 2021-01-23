@@ -10,7 +10,10 @@ const LoginPage = () => import('@/views/auth/LoginPage')
 
 // Data Pemohon
 const DataPemohon = () => import('@/views/data-pemohon/DataPemohon')
-const TambahDataPemohon = () => import('@/views/data-pemohon/TambahData')
+
+// Data Estimasi
+const DataEstimasi = () => import('@/views/data-estimasi/DataEstimasi')
+const TambahDataEstimasi = () => import('@/views/data-estimasi/TambahData')
 
 
 Vue.use(Router)
@@ -46,11 +49,23 @@ function configRoutes () {
         {
           path: '/',
           component: DataPemohon
+        }
+      ]
+    },
+    {
+      path: '/data-estimasi',
+      name: 'Data Estimasi',
+      redirect: '/data-estimasi',
+      component: TheContainer,
+      children: [
+        {
+          path: '/',
+          component: DataEstimasi
         },
         {
           path: 'tambah',
-          name: 'Tambah Data Pemohon',
-          component: TambahDataPemohon
+          name: 'Tambah Data Estimasi',
+          component: TambahDataEstimasi
         }
       ]
     },

@@ -35,6 +35,16 @@
             {{ index + 1 }}
           </td>
         </template>
+        <template #proses="{index}" v-if="showProses">
+          <td>
+            <CButtonGroup>
+              <CButton color="success" :to="editByID(index)" v-if="showEdit"
+                >Edit</CButton
+              >
+              <CButton color="danger" :to="deleteByID(index)">Hapus</CButton>
+            </CButtonGroup>
+          </td>
+        </template>
       </CDataTable>
     </CCardBody>
   </CCard>
@@ -64,10 +74,26 @@ export default {
       type: Array,
       required: true,
     },
+    showProses: {
+      type: Boolean,
+      default: true,
+    },
+    showEdit: {
+      type: Boolean,
+      default: true,
+    },
   },
   computed: {
     urlTambahData: function() {
       return this.routeEndpoint + "/tambah";
+    },
+  },
+  methods: {
+    editByID(id) {
+      return `${this.routeEndpoint}/edit?id=${id}`;
+    },
+    deleteByID(id) {
+      return `${this.routeEndpoint}/hapus?id=${id}`;
     },
   },
 };
