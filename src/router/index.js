@@ -15,6 +15,9 @@ const DataPemohon = () => import('@/views/data-pemohon/DataPemohon')
 const DataEstimasi = () => import('@/views/data-estimasi/DataEstimasi')
 const TambahDataEstimasi = () => import('@/views/data-estimasi/TambahData')
 
+// Data Biaya Riil
+const DataBiayaRiil = () => import('@/views/data-biaya-riil/DataBiayaRiil')
+const TambahDataBiayaRiil = () => import('@/views/data-biaya-riil/TambahData')
 
 Vue.use(Router)
 
@@ -66,6 +69,23 @@ function configRoutes () {
           path: 'tambah',
           name: 'Tambah Data Estimasi',
           component: TambahDataEstimasi
+        }
+      ]
+    },
+    {
+      path: '/data-biaya-riil',
+      name: 'Data Biaya Riil',
+      redirect: '/data-biaya-riil',
+      component: TheContainer,
+      children: [
+        {
+          path: '/',
+          component: DataBiayaRiil
+        },
+        {
+          path: 'tambah',
+          name: 'Tambah Data Biaya Riil',
+          component: TambahDataBiayaRiil
         }
       ]
     },

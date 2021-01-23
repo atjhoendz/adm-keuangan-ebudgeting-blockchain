@@ -13,16 +13,10 @@ export default [
         _children: ['Master']
       },
       {
-        _name: 'CSidebarNavDropdown',
+        _name: 'CSidebarNavItem',
         name: 'Data Pemohon',
-        route: '/data-pemohon',
-        icon: 'cil-user',
-        items: [
-          {
-            name: 'Lihat Data',
-            to: '/data-pemohon'
-          },
-        ]
+        to: '/data-pemohon',
+        icon: 'cil-user'
       },
       {
         _name: 'CSidebarNavTitle',
