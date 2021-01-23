@@ -3,7 +3,7 @@
     <CCol col="12">
       <card-list-data
         title="Data Pemohon"
-        routeEndpoint="data-pemohon"
+        :showButton="false"
         :items="itemsPemohon"
         :fields="fields"
       ></card-list-data>

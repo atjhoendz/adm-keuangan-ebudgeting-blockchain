@@ -12,9 +12,6 @@ const LoginPage = () => import('@/views/auth/LoginPage')
 const DataPemohon = () => import('@/views/data-pemohon/DataPemohon')
 const TambahDataPemohon = () => import('@/views/data-pemohon/TambahData')
 
-// Data Anggaran
-const DataAnggaran = () => import('@/views/data-anggaran/DataAnggaran')
-
 
 Vue.use(Router)
 
@@ -53,23 +50,6 @@ function configRoutes () {
         {
           path: 'tambah',
           name: 'Tambah Data Pemohon',
-          component: TambahDataPemohon
-        }
-      ]
-    },
-    {
-      path: '/data-anggaran',
-      name: 'Data Anggaran',
-      redirect: '/data-anggaran',
-      component: TheContainer,
-      children: [
-        {
-          path: '/',
-          component: DataAnggaran
-        },
-        {
-          path: 'tambah',
-          name: 'Tambah Data Anggaran',
           component: TambahDataPemohon
         }
       ]

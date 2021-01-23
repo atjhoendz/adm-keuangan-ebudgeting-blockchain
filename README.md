@@ -1,8 +1,8 @@
-# Bagian Umum E-Budgeting Blockchain
+# Admin Keuangan E-Budgeting Blockchain
 
 ## Description
 
-Bagian Umum Page E-Budgeting Blockchain using Core UI
+Admin Keuangan Page E-Budgeting Blockchain using Core UI
 
 ## Usage
 

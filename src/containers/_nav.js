@@ -14,18 +14,6 @@ export default [
       },
       {
         _name: 'CSidebarNavDropdown',
-        name: 'Data Anggaran',
-        route: '/data-anggaran',
-        icon: 'cil-dollar',
-        items: [
-          {
-            name: 'Lihat Data',
-            to: '/data-anggaran'
-          },
-        ]
-      },
-      {
-        _name: 'CSidebarNavDropdown',
         name: 'Data Pemohon',
         route: '/data-pemohon',
         icon: 'cil-user',
@@ -34,10 +22,58 @@ export default [
             name: 'Lihat Data',
             to: '/data-pemohon'
           },
+        ]
+      },
+      {
+        _name: 'CSidebarNavTitle',
+        _children: ['Transaksi']
+      },
+      {
+        _name: 'CSidebarNavDropdown',
+        name: 'Data Estimasi',
+        route: '/data-estimasi',
+        icon: 'cil-wallet',
+        items: [
+          {
+            name: 'Lihat Data',
+            to: '/data-estimasi'
+          },
           {
             name: 'Tambah Data',
-            to: '/data-pemohon/tambah'
-          }
+            to: '/data-estimasi/tambah'
+          },
+        ]
+      },
+      {
+        _name: 'CSidebarNavDropdown',
+        name: 'Data Biaya Riil',
+        route: '/data-biaya-riil',
+        icon: 'cil-money',
+        items: [
+          {
+            name: 'Lihat Data',
+            to: '/data-biaya-riil'
+          },
+          {
+            name: 'Tambah Data',
+            to: '/data-biaya-riil/tambah'
+          },
+        ]
+      },
+      {
+        _name: 'CSidebarNavDropdown',
+        name: 'Data Perbandingan',
+        route: '/data-perbandingan',
+        icon: 'cil-balance-scale',
+        items: [
+          {
+            name: 'Lihat Data',
+            to: '/data-perbandingan'
+          },
+          {
+            name: 'Tambah Data',
+            to: '/data-perbandingan/tambah'
+          },
         ]
       },
     ]
