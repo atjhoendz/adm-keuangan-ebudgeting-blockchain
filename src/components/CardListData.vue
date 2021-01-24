@@ -3,7 +3,7 @@
     <CCardHeader class="d-flex">
       <span class="h4 mr-auto my-auto">{{ title }}</span>
       <div v-if="showBtnCetak" class="mr-2">
-        <CButton color="success" class="d-md-down-none" :to="urlCetakData()"
+        <CButton color="secondary" class="d-md-down-none" :to="urlCetakData()"
           >Cetak</CButton
         >
       </div>

@@ -290,40 +290,4 @@ export const itemsBiayaRiil = [{
   "total": "82097313.10",
   "status": "fseocka",
   "kategori-pmk":"lorem ipsum"
-}, {
-  "tanggal-berangkat": "02/14/2020",
-  "nama-pemohon": "Worthy",
-  "dari-lembaga": "Jatri",
-  "jenis-pmk": "Randy",
-  "asal": "Dominican Republic",
-  "tujuan": "China",
-  "banyak": 27,
-  "biaya-satuan": 88,
-  "total": "99650380.40",
-  "status": "yynywsg",
-  "kategori-pmk":"lorem ipsum"
-}, {
-  "tanggal-berangkat": "09/22/2020",
-  "nama-pemohon": "Eugenius",
-  "dari-lembaga": "Gabspot",
-  "jenis-pmk": "Florence",
-  "asal": "Ukraine",
-  "tujuan": "Russia",
-  "banyak": 73,
-  "biaya-satuan": 57,
-  "total": "67290016.73",
-  "status": "fghwipw",
-  "kategori-pmk":"lorem ipsum"
-}, {
-  "tanggal-berangkat": "01/30/2020",
-  "nama-pemohon": "Liam",
-  "dari-lembaga": "Livetube",
-  "jenis-pmk": "Elfrieda",
-  "asal": "Sierra Leone",
-  "tujuan": "China",
-  "banyak": 96,
-  "biaya-satuan": 1,
-  "total": "75601881.56",
-  "status": "hepwscs",
-  "kategori-pmk":"lorem ipsum"
 }]

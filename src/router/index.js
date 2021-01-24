@@ -22,6 +22,7 @@ const TambahDataBiayaRiil = () => import('@/views/data-biaya-riil/TambahData')
 // Data Perbandingan
 const DataPerbandingan = () => import('@/views/data-perbandingan/DataPerbandingan')
 const DaftarPernyataanRiil = () => import('@/views/data-perbandingan/DaftarPernyataanRiil')
+const PerbandinganBiaya = () => import('@/views/data-perbandingan/PerbandinganBiaya')
 
 Vue.use(Router)
 
@@ -107,6 +108,11 @@ function configRoutes () {
           path: 'daftar-pernyataan-riil',
           name: 'Daftar Pernyataan Riil',
           component: DaftarPernyataanRiil
+        },
+        {
+          path: 'detail-perbandingan-biaya',
+          name: 'Detail Perbandingan Biaya',
+          component: PerbandinganBiaya
         }
       ]
     },
