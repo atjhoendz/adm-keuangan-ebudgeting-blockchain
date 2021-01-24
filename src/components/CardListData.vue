@@ -2,21 +2,22 @@
   <CCard>
     <CCardHeader class="d-flex">
       <span class="h4 mr-auto my-auto">{{ title }}</span>
-      <CButton
-        v-if="showButton"
-        color="primary"
-        class="d-md-down-none"
-        :to="urlTambahData"
-        >Tambah Data</CButton
-      >
-      <CButton
-        v-if="showButton"
-        color="primary"
-        class="d-lg-none"
-        :to="urlTambahData"
-      >
-        <CIcon name="cil-plus" />
-      </CButton>
+      <div v-if="showBtnCetak" class="mr-2">
+        <CButton color="success" class="d-md-down-none" :to="urlCetakData()"
+          >Cetak</CButton
+        >
+      </div>
+      <div v-if="showBtnTambah">
+        <CButton
+          color="primary"
+          class="d-md-down-none"
+          :to="urlTambahData"
+          v-text="txtTambah"
+        ></CButton>
+        <CButton color="primary" class="d-lg-none" :to="urlTambahData">
+          <CIcon name="cil-plus" />
+        </CButton>
+      </div>
     </CCardHeader>
     <CCardBody>
       <CDataTable
@@ -27,7 +28,7 @@
         :items-per-page="5"
         hover
         sorter
-        pagination
+        :pagination="pagination"
         border
       >
         <template #no="{index}">
@@ -38,12 +39,35 @@
         <template #proses="{index}" v-if="showProses">
           <td>
             <CButtonGroup>
-              <CButton color="success" :to="editByID(index)" v-if="showEdit"
+              <CButton
+                color="success"
+                :to="editByID(index)"
+                v-if="showEdit"
+                size="sm"
                 >Edit</CButton
               >
-              <CButton color="danger" :to="deleteByID(index)">Hapus</CButton>
+              <CButton color="danger" :to="deleteByID(index)" size="sm"
+                >Hapus</CButton
+              >
             </CButtonGroup>
           </td>
+        </template>
+        <template #daftar-pernyataan-riil="{index}">
+          <td class="text-center">
+            <CButton color="secondary" size="sm" :to="detailRiil(index)"
+              >Detail</CButton
+            >
+          </td>
+        </template>
+        <template #perbandingan-biaya="{index}">
+          <td class="text-center">
+            <CButton color="secondary" size="sm" :to="detailPerbandingan(index)"
+              >Detail</CButton
+            >
+          </td>
+        </template>
+        <template #under-table>
+          <slot name="under-table"></slot>
         </template>
       </CDataTable>
     </CCardBody>
@@ -58,9 +82,13 @@ export default {
       type: String,
       required: true,
     },
-    showButton: {
+    showBtnTambah: {
       type: Boolean,
       default: true,
+    },
+    txtTambah: {
+      type: String,
+      default: "Tambah Data",
     },
     routeEndpoint: {
       type: String,
@@ -82,10 +110,18 @@ export default {
       type: Boolean,
       default: true,
     },
+    showBtnCetak: {
+      type: Boolean,
+      default: false,
+    },
+    pagination: {
+      type: Boolean,
+      default: true,
+    },
   },
   computed: {
     urlTambahData: function() {
-      return this.routeEndpoint + "/tambah";
+      return `/${this.routeEndpoint}/tambah`;
     },
   },
   methods: {
@@ -93,7 +129,16 @@ export default {
       return `${this.routeEndpoint}/edit?id=${id}`;
     },
     deleteByID(id) {
-      return `${this.routeEndpoint}/hapus?id=${id}`;
+      return `/${this.routeEndpoint}/hapus?id=${id}`;
+    },
+    detailRiil(id) {
+      return `/${this.routeEndpoint}/daftar-pernyataan-riil?id=${id}`;
+    },
+    detailPerbandingan(id) {
+      return `/${this.routeEndpoint}/detail-perbandingan-biaya?id=${id}`;
+    },
+    urlCetakData() {
+      return `/${this.routeEndpoint}/cetak-biaya-riil`;
     },
   },
 };

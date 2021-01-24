@@ -19,6 +19,10 @@ const TambahDataEstimasi = () => import('@/views/data-estimasi/TambahData')
 const DataBiayaRiil = () => import('@/views/data-biaya-riil/DataBiayaRiil')
 const TambahDataBiayaRiil = () => import('@/views/data-biaya-riil/TambahData')
 
+// Data Perbandingan
+const DataPerbandingan = () => import('@/views/data-perbandingan/DataPerbandingan')
+const DaftarPernyataanRiil = () => import('@/views/data-perbandingan/DaftarPernyataanRiil')
+
 Vue.use(Router)
 
 export default new Router({
@@ -86,6 +90,23 @@ function configRoutes () {
           path: 'tambah',
           name: 'Tambah Data Biaya Riil',
           component: TambahDataBiayaRiil
+        }
+      ]
+    },
+    {
+      path: '/data-perbandingan',
+      name: 'Data Perbandingan',
+      redirect: '/data-perbandingan',
+      component: TheContainer,
+      children: [
+        {
+          path: '/',
+          component: DataPerbandingan
+        },
+        {
+          path: 'daftar-pernyataan-riil',
+          name: 'Daftar Pernyataan Riil',
+          component: DaftarPernyataanRiil
         }
       ]
     },

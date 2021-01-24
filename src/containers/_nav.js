@@ -55,20 +55,10 @@ export default [
         ]
       },
       {
-        _name: 'CSidebarNavDropdown',
+        _name: 'CSidebarNavItem',
         name: 'Data Perbandingan',
-        route: '/data-perbandingan',
+        to: '/data-perbandingan',
         icon: 'cil-balance-scale',
-        items: [
-          {
-            name: 'Lihat Data',
-            to: '/data-perbandingan'
-          },
-          {
-            name: 'Tambah Data',
-            to: '/data-perbandingan/tambah'
-          },
-        ]
       },
     ]
   }
