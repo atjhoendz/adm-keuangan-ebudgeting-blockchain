@@ -1,11 +1,15 @@
 module.exports = {
   presets: [
     [
-      '@babel/preset-env',
+      "@babel/preset-env",
       {
-        useBuiltIns: 'entry',
+        useBuiltIns: "entry",
         corejs: 3
       }
     ]
+  ],
+  plugins: [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-regenerator"
   ]
-}
+};
