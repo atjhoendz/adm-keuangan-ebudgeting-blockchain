@@ -30,6 +30,7 @@ export const routes = [
     redirect: '/dashboard',
     name: 'Home',
     component: TheContainer,
+    meta: { isAuth: true },
     children: [
       {
         path: 'dashboard',
@@ -43,6 +44,7 @@ export const routes = [
     name: 'Data Pemohon',
     redirect: '/data-pemohon',
     component: TheContainer,
+    meta: { isAuth: true },
     children: [
       {
         path: '/',
@@ -55,6 +57,7 @@ export const routes = [
     name: 'Data Estimasi',
     redirect: '/data-estimasi',
     component: TheContainer,
+    meta: { isAuth: true },
     children: [
       {
         path: '/',
@@ -72,6 +75,7 @@ export const routes = [
     name: 'Data Biaya Riil',
     redirect: '/data-biaya-riil',
     component: TheContainer,
+    meta: { isAuth: true },
     children: [
       {
         path: '/',
@@ -89,6 +93,7 @@ export const routes = [
     name: 'Data Perbandingan',
     redirect: '/data-perbandingan',
     component: TheContainer,
+    meta: { isAuth: true },
     children: [
       {
         path: '/',
@@ -108,7 +113,7 @@ export const routes = [
   },
   {
     path: '/login',
-    name: 'LoginPage',
+    name: 'Login',
     component: LoginPage,
   },
 ]

@@ -18,7 +18,14 @@
                 <CForm>
                   <h1>Login</h1>
                   <p class="text-muted">Sign In to your account</p>
-                  <CInput placeholder="Username" autocomplete="username">
+                  <p class="text-danger" v-if="message">{{ message }}</p>
+                  <CInput
+                    placeholder="Username"
+                    autocomplete="username"
+                    v-model.trim="$v.username.$model"
+                    :is-valid="validate('username')"
+                    invalid-feedback="Username harus diisi."
+                  >
                     <template #prepend-content
                       ><CIcon name="cil-user"
                     /></template>
@@ -27,6 +34,10 @@
                     placeholder="Password"
                     type="password"
                     autocomplete="curent-password"
+                    v-model.trim="$v.password.$model"
+                    :is-valid="validate('password')"
+                    invalid-feedback="Password harus diisi."
+                    @keyup.enter="makeLogin"
                   >
                     <template #prepend-content
                       ><CIcon name="cil-lock-locked"
@@ -34,7 +45,12 @@
                   </CInput>
                   <CRow>
                     <CCol col="6" class="text-left">
-                      <CButton color="primary" class="px-4" to="/"
+                      <CSpinner color="info" v-if="isLoading" />
+                      <CButton
+                        color="primary"
+                        class="px-4"
+                        v-else
+                        @click="makeLogin"
                         >Login</CButton
                       >
                     </CCol>
@@ -50,7 +66,50 @@
 </template>
 
 <script>
+import { AuthService } from '../../services/auth.service'
+import { loginValidations } from '../../validations/validationRules'
+
 export default {
-  name: "LoginPage",
-};
+  name: 'LoginPage',
+  data() {
+    return {
+      username: '',
+      password: '',
+      isLoading: false,
+      message: '',
+    }
+  },
+  validations: loginValidations,
+  methods: {
+    validate(type) {
+      if (this.$v[type].$error) {
+        return !this.$v[type].$invalid
+      }
+      return null
+    },
+    async makeLogin() {
+      this.$v.$touch()
+
+      if (this.$v.$invalid) return
+
+      this.isLoading = true
+
+      try {
+        const response = await AuthService.makeLogin({
+          username: this.username,
+          password: this.password,
+        })
+
+        if (response == 401)
+          return (this.message =
+            'Login tidak berhasil. Anda tidak memiliki hak akses')
+
+        return await this.$router.push('/')
+      } catch (err) {
+        this.message =
+          'Login tidak berhasil. Periksa kembali username/password anda.'
+      }
+    },
+  },
+}
 </script>
