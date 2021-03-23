@@ -8,7 +8,7 @@
         {{ $store.state.user.currentUser.username }}
       </span>
     </template>
-    <CDropdownItem to="/login">
+    <CDropdownItem @click="makeLogout">
       <CIcon name="cil-lock-locked" /> Logout
     </CDropdownItem>
     <toast-msg :listToasts="listToasts" />
