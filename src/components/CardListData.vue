@@ -30,6 +30,7 @@
         sorter
         :pagination="pagination"
         border
+        :loading="isLoading"
       >
         <template #no="{index}">
           <td>
@@ -76,7 +77,7 @@
 
 <script>
 export default {
-  name: "CardListData",
+  name: 'CardListData',
   props: {
     title: {
       type: String,
@@ -88,11 +89,11 @@ export default {
     },
     txtTambah: {
       type: String,
-      default: "Tambah Data",
+      default: 'Tambah Data',
     },
     routeEndpoint: {
       type: String,
-      default: "",
+      default: '',
     },
     items: {
       type: Array,
@@ -118,30 +119,34 @@ export default {
       type: Boolean,
       default: true,
     },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     urlTambahData: function() {
-      return `/${this.routeEndpoint}/tambah`;
+      return `/${this.routeEndpoint}/tambah`
     },
   },
   methods: {
     editByID(id) {
-      return `${this.routeEndpoint}/edit?id=${id}`;
+      return `${this.routeEndpoint}/edit?id=${id}`
     },
     deleteByID(id) {
-      return `/${this.routeEndpoint}/hapus?id=${id}`;
+      return `/${this.routeEndpoint}/hapus?id=${id}`
     },
     detailRiil(id) {
-      return `/${this.routeEndpoint}/daftar-pernyataan-riil?id=${id}`;
+      return `/${this.routeEndpoint}/daftar-pernyataan-riil?id=${id}`
     },
     detailPerbandingan(id) {
-      return `/${this.routeEndpoint}/detail-perbandingan-biaya?id=${id}`;
+      return `/${this.routeEndpoint}/detail-perbandingan-biaya?id=${id}`
     },
     urlCetakData() {
-      return `/${this.routeEndpoint}/cetak-biaya-riil`;
+      return `/${this.routeEndpoint}/cetak-biaya-riil`
     },
   },
-};
+}
 </script>
 
 <style></style>
