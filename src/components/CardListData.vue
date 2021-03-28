@@ -70,6 +70,11 @@
         <template #under-table>
           <slot name="under-table"></slot>
         </template>
+        <template #pilih="{item}">
+          <td>
+            <slot name="pilih" :item="item"></slot>
+          </td>
+        </template>
       </CDataTable>
     </CCardBody>
   </CCard>

@@ -3,7 +3,7 @@ import {
   minLength,
   maxLength,
   numeric,
-} from 'vuelidate/lib/validators';
+} from 'vuelidate/lib/validators'
 
 export const loginValidations = {
   username: {
@@ -12,7 +12,7 @@ export const loginValidations = {
   password: {
     required,
   },
-};
+}
 
 export const pemohonValidations = {
   pemohonFormData: {
@@ -59,8 +59,44 @@ export const pemohonValidations = {
       required,
       minLength: minLength(6),
       goodPassword: password => {
-        return /[a-z]/.test(password) && /[0-9]/.test(password);
+        return /[a-z]/.test(password) && /[0-9]/.test(password)
       },
     },
   },
-};
+}
+
+export const estimasiValidation = {
+  formData: {
+    nama_pemohon: {
+      required,
+    },
+    nama_lembaga: {
+      required,
+    },
+    jenis_pmk: {
+      required,
+    },
+    kategori_pmk: {
+      required,
+    },
+    tanggal_berangkat: {
+      required,
+    },
+    asal: {
+      required,
+    },
+    tujuan: {
+      required,
+    },
+    biaya: {
+      required,
+    },
+    banyak: {
+      required,
+      minLength: minLength(0),
+    },
+    total: {
+      required,
+    },
+  },
+}
