@@ -37,20 +37,9 @@
             {{ index + 1 }}
           </td>
         </template>
-        <template #proses="{index}" v-if="showProses">
+        <template #proses="{item}">
           <td>
-            <CButtonGroup>
-              <CButton
-                color="success"
-                :to="editByID(index)"
-                v-if="showEdit"
-                size="sm"
-                >Edit</CButton
-              >
-              <CButton color="danger" :to="deleteByID(index)" size="sm"
-                >Hapus</CButton
-              >
-            </CButtonGroup>
+            <slot name="proses" :item="item" />
           </td>
         </template>
         <template #daftar-pernyataan-riil="{index}">
@@ -108,14 +97,6 @@ export default {
       type: Array,
       required: true,
     },
-    showProses: {
-      type: Boolean,
-      default: true,
-    },
-    showEdit: {
-      type: Boolean,
-      default: true,
-    },
     showBtnCetak: {
       type: Boolean,
       default: false,
@@ -135,12 +116,6 @@ export default {
     },
   },
   methods: {
-    editByID(id) {
-      return `${this.routeEndpoint}/edit?id=${id}`
-    },
-    deleteByID(id) {
-      return `/${this.routeEndpoint}/hapus?id=${id}`
-    },
     detailRiil(id) {
       return `/${this.routeEndpoint}/daftar-pernyataan-riil?id=${id}`
     },
