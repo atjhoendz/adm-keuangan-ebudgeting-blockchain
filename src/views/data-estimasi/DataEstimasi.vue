@@ -4,7 +4,7 @@
       <card-list-data
         title="Data Estimasi"
         :items="items"
-        :fields="fields"
+        :fields="fieldsEstimasi"
         routeEndpoint="data-estimasi"
         :showEdit="false"
         :isLoading="isLoading"
@@ -19,14 +19,14 @@
 import CardListData from '../../components/CardListData.vue'
 import ToastMsg from '../../components/ToastMsg'
 import { EstimasiService } from '../../services/estimasi.service'
-import fields from './fields'
+import { fieldsEstimasi } from './fields'
 
 export default {
   name: 'DataEstimasi',
   components: { CardListData, ToastMsg },
   data() {
     return {
-      fields,
+      fieldsEstimasi,
       items: [],
       listToasts: [],
       isLoading: false,
