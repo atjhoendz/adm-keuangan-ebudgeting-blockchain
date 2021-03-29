@@ -64,7 +64,7 @@
           >
             <template #append-content>
               <div @click="browsePemohon" class="cursorPointer">
-                Cari
+                Cari Pemohon
               </div>
             </template>
           </CInput>

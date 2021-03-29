@@ -9,6 +9,7 @@ export const fieldsEstimasi = [
   'banyak',
   { key: 'biaya', label: 'Biaya Satuan' },
   'total',
+  'status',
   { key: 'proses', _style: 'width:50px' },
 ]
 
