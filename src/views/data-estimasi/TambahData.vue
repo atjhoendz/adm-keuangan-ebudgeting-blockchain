@@ -64,7 +64,10 @@
           >
             <template #append-content>
               <div @click="browsePemohon" class="cursorPointer">
-                Cari Pemohon
+                <span class="d-none d-md-inline d-xs-none"
+                  >Pilihan Pemohon</span
+                >
+                <span class="d-xs-inline d-md-none">Pilihan</span>
               </div>
             </template>
           </CInput>
