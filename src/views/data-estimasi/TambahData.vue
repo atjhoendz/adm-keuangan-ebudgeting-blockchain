@@ -39,7 +39,7 @@
         <CCol col="12">
           <CInput
             label="Jenis PMK"
-            placeholder="Pilih jenis PMK"
+            placeholder="Masukkan jenis PMK"
             v-model.trim="$v.formData.jenis_pmk.$model"
             :is-valid="validate('jenis_pmk')"
             invalid-feedback="Jenis PMK harus diisi."
@@ -372,6 +372,7 @@ export default {
         newFormData.tanggal_berangkat = new Date(
           this.formData.tanggal_berangkat
         ).toLocaleDateString()
+        newFormData.banyak = newFormData.banyak.toString()
 
         const response = await EstimasiService.addData(newFormData)
 
@@ -381,7 +382,7 @@ export default {
         }
         this.$store.commit('toast/ADD_TOAST', toast)
 
-        return this.$router.push({ path: '/estimasi' })
+        return this.$router.push({ path: '/data-estimasi' })
       } catch (err) {
         const toast = {
           message: 'Terjadi masalah. Data estimasi tidak berhasil ditambahkan.',
@@ -419,7 +420,7 @@ export default {
         this.dataPemohon = data.map(item => {
           return {
             key: item.Key,
-            nama: item.Record.nama,
+            ...item.Record,
           }
         })
       } catch (err) {
@@ -537,6 +538,7 @@ export default {
       })[0]
 
       this.formData.nama_pemohon = selectedPemohon.nama
+      this.formData.status = selectedPemohon.status_berkas
 
       this.modalPemohon = false
     },
