@@ -507,6 +507,7 @@ export default {
               }
             )
           }
+          this.countTotal()
         }
         return this.readOnlyFieldPMK.push(type)
       }
