@@ -59,6 +59,14 @@ export default {
         const data = await EstimasiService.getAll()
 
         this.items = data.map(item => {
+          item.Record.biaya = parseInt(item.Record.biaya).toLocaleString('id', {
+            style: 'currency',
+            currency: 'IDR',
+          })
+          item.Record.total = parseInt(item.Record.total).toLocaleString('id', {
+            style: 'currency',
+            currency: 'IDR',
+          })
           return {
             key: item.Key,
             ...item.Record,
