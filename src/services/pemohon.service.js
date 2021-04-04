@@ -15,4 +15,14 @@ export class PemohonService extends BaseService {
       throw err
     }
   }
+
+  static async getCountData() {
+    try {
+      const data = await this.getAll()
+
+      return data.length
+    } catch (err) {
+      throw err
+    }
+  }
 }
