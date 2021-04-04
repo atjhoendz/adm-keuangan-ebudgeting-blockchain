@@ -100,3 +100,42 @@ export const estimasiValidation = {
     },
   },
 }
+
+export const biayaRiilValidation = {
+  formData: {
+    tanggal_berangkat: {
+      required,
+    },
+    biaya: {
+      required,
+    },
+    banyak: {
+      required,
+      minLength: minLength(0),
+    },
+    kategori_pmk: {
+      required,
+    },
+    jenis_pmk: {
+      required,
+    },
+    total: {
+      required,
+    },
+    bukti: {
+      required,
+    },
+    asal: {
+      required,
+    },
+    tujuan: {
+      required,
+    },
+    nama_pemohon: {
+      required,
+    },
+    nama_lembaga: {
+      required,
+    },
+  },
+}

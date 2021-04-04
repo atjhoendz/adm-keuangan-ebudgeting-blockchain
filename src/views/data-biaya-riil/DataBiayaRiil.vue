@@ -4,7 +4,7 @@
       <card-list-data
         title="Data Biaya Riil"
         :items="items"
-        :fields="fields"
+        :fields="fieldsBiayaRiil"
         routeEndpoint="data-biaya-riil"
         :showEdit="false"
         :isLoading="isLoading"
@@ -36,7 +36,7 @@
 import CardListData from '../../components/CardListData.vue'
 import ToastMsg from '../../components/ToastMsg'
 import { BiayaRiilService } from '../../services/biayaRiil.service'
-import { fields } from './fields'
+import { fieldsBiayaRiil } from './fields'
 
 export default {
   name: 'DataBiayaRiil',
@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       items: [],
-      fields,
+      fieldsBiayaRiil,
       listToasts: [],
       keyForDelete: '',
       showModalDelete: false,
@@ -59,6 +59,14 @@ export default {
         const response = await BiayaRiilService.getAll()
 
         this.items = response.map(item => {
+          item.Record.biaya = parseInt(item.Record.biaya).toLocaleString('id', {
+            style: 'currency',
+            currency: 'IDR',
+          })
+          item.Record.total = parseInt(item.Record.total).toLocaleString('id', {
+            style: 'currency',
+            currency: 'IDR',
+          })
           return {
             key: item.Key,
             ...item.Record,
