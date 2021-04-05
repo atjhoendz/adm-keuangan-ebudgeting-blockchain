@@ -4,7 +4,6 @@ import { API_URL } from '../.env'
 import $store from '../store'
 import $router from '../router'
 import { Http } from '../services/http.init'
-import cookie from 'vue-cookies'
 
 export class AuthService {
   static async makeLogin({ username, password }) {
@@ -48,9 +47,11 @@ export class AuthService {
 
   static async refreshToken() {
     try {
-      const response = await axios.get(`${API_URL}/auth/refresh`, {
-        headers: { Authorization: `Bearer ${$store.state.auth.refreshToken}` },
-      })
+      // const response = await axios.get(`${API_URL}/auth/refresh`, {
+      //   headers: { Authorization: `Bearer ${$store.state.auth.refreshToken}` },
+      // })
+
+      const response = await axios.get(`${API_URL}/auth/refresh`)
 
       _setAuthData({
         accessToken: response.data.data.accessToken,
@@ -74,15 +75,21 @@ export class AuthService {
   }
 
   static isAccessTokenExpired() {
-    const accessTokenExpDate = $store.state.auth.accessTokenExpDate - 10
+    // const accessTokenExpDate = $store.state.auth.accessTokenExpDate - 10
+    const accessTokenExpDate = $store.state.user.currentUser.exp - 10
     const nowTime = Math.floor(new Date().getTime() / 1000)
 
     return accessTokenExpDate <= nowTime
   }
 
+  static isCurrentUserExist() {
+    const currentUser = localStorage.getItem('currentUser')
+    return !!currentUser
+  }
+
   static hasRefreshToken() {
-    // return Boolean(localStorage.getItem('refreshToken'));
-    return Boolean($store.state.auth.refreshToken)
+    return Boolean(localStorage.getItem('refreshToken'))
+    // return Boolean($store.state.auth.refreshToken)
   }
 
   static setRefreshToken(status) {
@@ -126,17 +133,19 @@ export function parseTokenData(accessToken) {
 function _resetAuthData() {
   $store.commit('auth/SET_ACCESS_TOKEN', null)
   $store.commit('auth/SET_REFRESH_TOKEN', null)
+  $store.commit('user/RESET')
 
   AuthService.setRefreshToken('')
-  cookie.keys().forEach(key => cookie.remove(key)) // delete
+  // cookie.keys().forEach(key => cookie.remove(key)) // delete
 }
 
-function _setAuthData({ accessToken, refreshToken = null, exp } = {}) {
+function _setAuthData({ accessToken } = {}) {
   const payloadData = parseTokenData(accessToken)
   $store.commit('user/SET_CURRENT_USER', payloadData)
 
-  $store.commit('auth/SET_ACCESS_TOKEN', accessToken)
-  if (refreshToken) $store.commit('auth/SET_REFRESH_TOKEN', refreshToken)
-  $store.commit('auth/SET_ATOKEN_EXP_DATE', exp)
-  // AuthService.setRefreshToken('true');
+  // $store.commit('auth/SET_ACCESS_TOKEN', accessToken)
+  // if (refreshToken) $store.commit('auth/SET_REFRESH_TOKEN', refreshToken)
+  // $store.commit('auth/SET_ATOKEN_EXP_DATE', exp)
+
+  AuthService.setRefreshToken('true')
 }

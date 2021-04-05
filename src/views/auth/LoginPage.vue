@@ -109,6 +109,7 @@ export default {
         this.message =
           'Login tidak berhasil. Periksa kembali username/password anda.'
       }
+      this.isLoading = false
     },
   },
 }

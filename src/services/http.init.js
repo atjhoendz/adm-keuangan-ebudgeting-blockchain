@@ -16,7 +16,7 @@ export class Http {
     if (this.isAuth) {
       this.instance.interceptors.request.use(
         request => {
-          request.headers.Authorization = AuthService.getBearer()
+          // request.headers.Authorization = AuthService.getBearer()
 
           if (
             AuthService.isAccessTokenExpired() &&
@@ -24,7 +24,7 @@ export class Http {
           ) {
             return AuthService.debounceRefreshToken()
               .then(() => {
-                request.headers.Authorization = AuthService.getBearer()
+                // request.headers.Authorization = AuthService.getBearer()
 
                 return request
               })
