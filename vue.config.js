@@ -8,10 +8,4 @@ module.exports = {
     },
   },
   transpileDependencies: ['@coreui/utils', '@coreui/vue'],
-  devServer: {
-    hot: true,
-    host: 'adm-keuangan.test',
-    disableHostCheck: true,
-    https: true,
-  },
 }
