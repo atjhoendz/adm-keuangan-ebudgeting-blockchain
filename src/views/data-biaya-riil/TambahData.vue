@@ -58,9 +58,7 @@
           <CInput
             label="Nama Pemohon"
             placeholder="Masukkan nama pemohon"
-            v-model.trim="$v.formData.nama_pemohon.$model"
-            :is-valid="validate('nama_pemohon')"
-            invalid-feedback="Nama pemohon harus diisi."
+            v-model="nama_pemohon"
             :readonly="readOnlyEstimasi('nama_pemohon')"
           >
           </CInput>
@@ -266,9 +264,10 @@ export default {
         bukti: '',
         asal: '',
         tujuan: '',
-        nama_pemohon: '',
         nama_lembaga: '',
+        data_pemohon: '',
       },
+      nama_pemohon: '',
       isGettingData: false,
       isLoading: false,
       listToasts: [],
@@ -363,6 +362,8 @@ export default {
           return {
             key: item.Key,
             biayaAsNumber: biayaAsNumber,
+            nama_pemohon: item.Record.data_pemohon.nama,
+            status: item.Record.data_pemohon.status_berkas,
             ...item.Record,
           }
         })
@@ -432,8 +433,9 @@ export default {
       this.formData.jenis_pmk = this.selectedEstimasiData.jenis_pmk
       this.formData.asal = this.selectedEstimasiData.asal
       this.formData.tujuan = this.selectedEstimasiData.tujuan
-      this.formData.nama_pemohon = this.selectedEstimasiData.nama_pemohon
       this.formData.nama_lembaga = this.selectedEstimasiData.nama_lembaga
+      this.formData.data_pemohon = this.selectedEstimasiData.data_pemohon
+      this.nama_pemohon = this.selectedEstimasiData.nama_pemohon
 
       this.modalEstimasi = false
 

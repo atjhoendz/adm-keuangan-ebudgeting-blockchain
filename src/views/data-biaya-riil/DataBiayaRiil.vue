@@ -69,6 +69,7 @@ export default {
           })
           return {
             key: item.Key,
+            nama_pemohon: item.Record.data_pemohon.nama,
             ...item.Record,
           }
         })
