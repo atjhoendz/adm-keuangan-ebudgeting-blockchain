@@ -1,7 +1,7 @@
 export const fieldsEstimasi = [
   { key: 'no', label: 'No.', _style: 'width:10px' },
   { key: 'tanggal_berangkat' },
-  'nama_pemohon',
+  { key: 'nama_pemohon', label: 'Nama Pemohon' },
   { key: 'nama_lembaga', label: 'Dari Lembaga' },
   { key: 'jenis_pmk', label: 'Jenis PMK' },
   'asal',

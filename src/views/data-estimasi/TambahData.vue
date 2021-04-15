@@ -57,7 +57,7 @@
           <CInput
             label="Nama Pemohon"
             placeholder="Masukkan nama pemohon"
-            v-model.trim="$v.formData.nama_pemohon.$model"
+            v-model.trim="$v.nama_pemohon.$model"
             :is-valid="validate('nama_pemohon')"
             invalid-feedback="Nama pemohon harus diisi."
             :readonly="readOnly"
@@ -278,7 +278,6 @@ export default {
     return {
       formData: {
         docType: 'estimasi',
-        nama_pemohon: '',
         nama_lembaga: '',
         jenis_pmk: '',
         kategori_pmk: '',
@@ -289,8 +288,9 @@ export default {
         biaya: '',
         banyak: 1,
         total: '',
-        status: '',
+        data_pemohon: '',
       },
+      nama_pemohon: '',
       totalAsNumber: '',
       dataPMK: [],
       isLoading: false,
@@ -347,6 +347,13 @@ export default {
   validations: estimasiValidation,
   methods: {
     validate(type) {
+      if (type == 'nama_pemohon') {
+        if (this.$v.nama_pemohon.$error) {
+          return !this.$v.nama_pemohon.$invalid
+        }
+        return null
+      }
+
       if (this.$v.formData[type].$error) {
         return !this.$v.formData[type].$invalid
       }
@@ -358,8 +365,9 @@ export default {
     },
     async addData() {
       this.$v.formData.$touch()
+      this.$v.nama_pemohon.$touch()
 
-      if (this.$v.formData.$invalid) return
+      if (this.$v.formData.$invalid || this.$v.nama_pemohon.$invalid) return
 
       this.isLoading = true
 
@@ -538,8 +546,8 @@ export default {
         return item.key == this.keySelectedPemohon
       })[0]
 
-      this.formData.nama_pemohon = selectedPemohon.nama
-      this.formData.status = selectedPemohon.status_berkas
+      this.nama_pemohon = selectedPemohon.nama
+      this.formData.data_pemohon = selectedPemohon
 
       this.modalPemohon = false
     },

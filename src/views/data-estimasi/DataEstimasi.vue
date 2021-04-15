@@ -69,6 +69,8 @@ export default {
           })
           return {
             key: item.Key,
+            nama_pemohon: item.Record.data_pemohon.nama,
+            status: item.Record.data_pemohon.status_berkas,
             ...item.Record,
           }
         })
