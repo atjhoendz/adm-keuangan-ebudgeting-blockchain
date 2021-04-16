@@ -118,10 +118,10 @@
             :fields="fieldsPernyataanRiil"
             :showEdit="false"
             routeEndpoint="data-perbandingan"
-            txtTambah="Tambah"
             :showBtnCetak="true"
             :pagination="false"
             :showBtnTambah="false"
+            :isLoading="isLoading"
           >
             <template #under-table>
               <tr class="d-flex">
@@ -171,6 +171,7 @@ export default {
       listToasts: [],
       nomorPMKOptions,
       tanggalPMKOptions,
+      isLoading: false,
     }
   },
   computed: {
@@ -193,6 +194,7 @@ export default {
   },
   methods: {
     async getDataBiayaRiil() {
+      this.isLoading = true
       try {
         const dataBiayaRiil = await PerbandinganService.getBiayaRiilByNamaPemohon(
           this.$route.params.key
@@ -219,6 +221,7 @@ export default {
           color: 'danger',
         })
       }
+      this.isLoading = false
     },
     cetakData() {
       alert('cetak')
