@@ -3,40 +3,82 @@
     <CCol col="12">
       <card-list-data
         title="Data Pemohon yang Melakukan Perjalanan Dinas"
-        :items="itemsPerbandingan"
-        :fields="fields"
-        routeEndpoint="data-perbandingan"
+        :items="items"
+        :fields="fieldsDataPemohon"
+        :routeEndpoint="routeEndpoint"
         :showBtnTambah="false"
-      ></card-list-data>
+      >
+        <template #daftar-pernyataan-riil="{item}">
+          <CButton
+            color="secondary"
+            size="sm"
+            :to="detailRiil(item.data_pemohon.key)"
+            >Detail</CButton
+          >
+        </template>
+        <template #perbandingan-biaya="{item}">
+          <CButton
+            color="secondary"
+            size="sm"
+            :to="detailPerbandingan(item.key)"
+            >Detail</CButton
+          >
+        </template>
+      </card-list-data>
     </CCol>
+    <toast-msg :listToasts="listToasts" />
   </CRow>
 </template>
 
 <script>
-import CardListData from "../../components/CardListData.vue";
-import { itemsPerbandingan } from "../../sample-data/data";
-
-const fields = [
-  { key: "no", label: "No.", _style: "width:10px" },
-  "tanggal-berangkat",
-  "nama-pemohon",
-  "dari-lembaga",
-  "maksud-perjalanan-dinas",
-  { key: "status", label: "Status Pemohon" },
-  "daftar-pernyataan-riil",
-  "perbandingan-biaya",
-];
+import CardListData from '../../components/CardListData.vue'
+import ToastMsg from '../../components/ToastMsg'
+import { EstimasiService } from '../../services/estimasi.service'
+import { fieldsDataPemohon } from './fields'
 
 export default {
-  components: { CardListData },
-  name: "DataPerbandingan",
+  components: { CardListData, ToastMsg },
+  name: 'DataPerbandingan',
   data() {
     return {
-      itemsPerbandingan,
-      fields,
-    };
+      fieldsDataPemohon,
+      items: [],
+      listToasts: [],
+      routeEndpoint: 'data-perbandingan',
+    }
   },
-};
+  methods: {
+    async getDataPemohon() {
+      try {
+        const dataEstimasi = await EstimasiService.getAll()
+
+        this.items = dataEstimasi.map(item => {
+          return {
+            key: item.Key,
+            nama_pemohon: item.Record.data_pemohon.nama,
+            status_berkas: item.Record.data_pemohon.status_berkas,
+            maksud_perjalanan: item.Record.data_pemohon.maksud_perjalanan,
+            ...item.Record,
+          }
+        })
+      } catch (err) {
+        this.listToasts.push({
+          message: 'Terjadi masalah. Data pemohon tidak berhasil didapatkan.',
+          color: 'danger',
+        })
+      }
+    },
+    detailRiil(key) {
+      return `${this.routeEndpoint}/daftar-pernyataan-riil/${key}`
+    },
+    detailPerbandingan(key) {
+      return `/${this.routeEndpoint}/detail-perbandingan-biaya/${key}`
+    },
+  },
+  async mounted() {
+    await this.getDataPemohon()
+  },
+}
 </script>
 
 <style></style>
