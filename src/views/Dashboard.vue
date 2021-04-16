@@ -7,7 +7,12 @@
       >
       </CWidgetSimple>
     </CCol>
-    <CCol sm="12" lg="4" v-for="(item, i) in dataDashboard" :key="i">
+    <CCol
+      sm="12"
+      :lg="i > 0 ? '6' : '4'"
+      v-for="(item, i) in dataDashboard"
+      :key="i"
+    >
       <CWidgetSimple :header="item.title" :text="item.text.toString()">
         <CSpinner color="info" v-if="isLoading && !item.text.length" />
       </CWidgetSimple>
@@ -39,10 +44,6 @@ export default {
         {
           title: 'Data Biaya Riil',
           text: '',
-        },
-        {
-          title: 'Data Perbandingan',
-          text: 'soon',
         },
       ],
       listToasts: [],
