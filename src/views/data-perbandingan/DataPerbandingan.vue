@@ -20,7 +20,7 @@
           <CButton
             color="secondary"
             size="sm"
-            :to="detailPerbandingan(item.key)"
+            :to="detailPerbandingan(item.data_pemohon.key)"
             >Detail</CButton
           >
         </template>
