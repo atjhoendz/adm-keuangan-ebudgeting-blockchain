@@ -13,4 +13,13 @@ export class PerbandinganService {
       throw err
     }
   }
+
+  static async getDataPerbandingan(key) {
+    try {
+      const response = await axiosService.get(`perbandingan-biaya/${key}`)
+      return response.data.data
+    } catch (err) {
+      throw err
+    }
+  }
 }
