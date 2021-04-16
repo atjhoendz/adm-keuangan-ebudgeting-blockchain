@@ -24,6 +24,8 @@ const DaftarPernyataanRiil = () =>
 const PerbandinganBiaya = () =>
   import('@/views/data-perbandingan/PerbandinganBiaya')
 
+const NotFoundPage = () => import('@/views/NotFoundPage')
+
 export const routes = [
   {
     path: '/',
@@ -100,12 +102,12 @@ export const routes = [
         component: DataPerbandingan,
       },
       {
-        path: 'daftar-pernyataan-riil',
+        path: 'daftar-pernyataan-riil/:key',
         name: 'Daftar Pernyataan Riil',
         component: DaftarPernyataanRiil,
       },
       {
-        path: 'detail-perbandingan-biaya',
+        path: 'detail-perbandingan-biaya/:key',
         name: 'Detail Perbandingan Biaya',
         component: PerbandinganBiaya,
       },
@@ -115,5 +117,10 @@ export const routes = [
     path: '/login',
     name: 'Login',
     component: LoginPage,
+  },
+  {
+    path: '*',
+    name: 'NotFoundPage',
+    component: NotFoundPage,
   },
 ]
