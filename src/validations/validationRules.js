@@ -67,9 +67,6 @@ export const pemohonValidations = {
 
 export const estimasiValidation = {
   formData: {
-    nama_pemohon: {
-      required,
-    },
     nama_lembaga: {
       required,
     },
@@ -98,6 +95,9 @@ export const estimasiValidation = {
     total: {
       required,
     },
+  },
+  nama_pemohon: {
+    required,
   },
 }
 
@@ -129,9 +129,6 @@ export const biayaRiilValidation = {
       required,
     },
     tujuan: {
-      required,
-    },
-    nama_pemohon: {
       required,
     },
     nama_lembaga: {
