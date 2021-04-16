@@ -2,10 +2,8 @@
   <CCard>
     <CCardHeader class="d-flex">
       <span class="h4 mr-auto my-auto">{{ title }}</span>
-      <div v-if="showBtnCetak" class="mr-2">
-        <CButton color="secondary" class="d-md-down-none" :to="urlCetakData()"
-          >Cetak</CButton
-        >
+      <div v-if="showBtnCetak" :class="{ 'mr-2': showBtnTambah }">
+        <slot name="btn-cetak"></slot>
       </div>
       <div v-if="showBtnTambah">
         <CButton
@@ -42,18 +40,14 @@
             <slot name="proses" :item="item" />
           </td>
         </template>
-        <template #daftar-pernyataan-riil="{index}">
+        <template #daftar-pernyataan-riil="{item}">
           <td class="text-center">
-            <CButton color="secondary" size="sm" :to="detailRiil(index)"
-              >Detail</CButton
-            >
+            <slot name="daftar-pernyataan-riil" :item="item"></slot>
           </td>
         </template>
-        <template #perbandingan-biaya="{index}">
+        <template #perbandingan-biaya="{item}">
           <td class="text-center">
-            <CButton color="secondary" size="sm" :to="detailPerbandingan(index)"
-              >Detail</CButton
-            >
+            <slot name="perbandingan-biaya" :item="item"></slot>
           </td>
         </template>
         <template #under-table>
@@ -113,17 +107,6 @@ export default {
   computed: {
     urlTambahData: function() {
       return `/${this.routeEndpoint}/tambah`
-    },
-  },
-  methods: {
-    detailRiil(id) {
-      return `/${this.routeEndpoint}/daftar-pernyataan-riil?id=${id}`
-    },
-    detailPerbandingan(id) {
-      return `/${this.routeEndpoint}/detail-perbandingan-biaya?id=${id}`
-    },
-    urlCetakData() {
-      return `/${this.routeEndpoint}/cetak-biaya-riil`
     },
   },
 }
