@@ -410,6 +410,16 @@ export default {
 
         return this.$router.push('/data-biaya-riil')
       } catch (err) {
+	const responseData = err.response.data
+	if (responseData?.type == 'info') {
+	  this.isLoading = false
+
+	  return this.listToasts.push({
+	    message: responseData.msg,
+	    color: 'warning',
+	  })
+	}
+
         this.listToasts.push({
           message:
             'Terjadi masalah. Data biaya riil tidak berhasil ditambahkan.',
