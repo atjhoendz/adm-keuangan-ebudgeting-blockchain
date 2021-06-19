@@ -136,12 +136,7 @@
               </tr>
             </template>
             <template #btn-cetak>
-              <CButton
-                color="primary"
-                class="d-md-down-none"
-                @click="cetakData()"
-                >Cetak</CButton
-              >
+              <CButton color="primary" class="d-md-down-none">Cetak</CButton>
             </template>
           </card-list-data>
           <card-list-data
@@ -169,12 +164,7 @@
               </tr>
             </template>
             <template #btn-cetak>
-              <CButton
-                color="primary"
-                class="d-md-down-none"
-                @click="cetakData()"
-                >Cetak</CButton
-              >
+              <CButton color="primary" class="d-md-down-none">Cetak</CButton>
             </template>
           </card-list-data>
           <CRow>
@@ -309,9 +299,6 @@ export default {
         style: 'currency',
         currency: 'IDR',
       })
-    },
-    cetakData() {
-      alert('cetak')
     },
   },
   async mounted() {
