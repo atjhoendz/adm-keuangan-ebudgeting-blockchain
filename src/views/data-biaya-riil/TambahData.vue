@@ -358,6 +358,10 @@ export default {
             style: 'currency',
             currency: 'IDR',
           })
+          item.Record.total = parseInt(item.Record.total).toLocaleString('id', {
+            style: 'currency',
+            currency: 'IDR',
+          })
 
           return {
             key: item.Key,
@@ -410,15 +414,15 @@ export default {
 
         return this.$router.push('/data-biaya-riil')
       } catch (err) {
-	const responseData = err.response.data
-	if (responseData?.type == 'info') {
-	  this.isLoading = false
+        const responseData = err.response.data
+        if (responseData?.type == 'info') {
+          this.isLoading = false
 
-	  return this.listToasts.push({
-	    message: responseData.msg,
-	    color: 'warning',
-	  })
-	}
+          return this.listToasts.push({
+            message: responseData.msg,
+            color: 'warning',
+          })
+        }
 
         this.listToasts.push({
           message:
